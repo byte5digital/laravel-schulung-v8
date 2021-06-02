@@ -1,6 +1,7 @@
 FROM composer:2 as vendor
 
 COPY database/ database/
+COPY packages/ packages/
 
 COPY composer.json composer.json
 COPY composer.lock composer.lock

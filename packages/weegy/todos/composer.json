@@ -8,7 +8,9 @@
             "email": "mwege@byte5.de"
         }
     ],
-    "require": {},
+    "require": {
+        "laravel/laravel": "8.x-dev"
+    },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
