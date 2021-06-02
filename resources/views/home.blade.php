@@ -5,7 +5,7 @@
         <h1>ToDos</h1>
         <div>
             <?php
-            use App\Models\Todo; /** @var Todo $todo */ ?>
+            use Weegy\Todos\App\Models\Todo; /** @var Todo $todo */ ?>
             @foreach ($todos as $todo)
                 <div class="row">
                     <div class="col-4">

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Weegy\Todos\App\Http\Controllers;
 
-use App\Models\Todo;
 use Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Weegy\Todos\App\Models\Todo;
 
 class TodoController extends Controller
 {
@@ -25,7 +26,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todos.new');
+        return view('todos::todos.new');
     }
 
     /**
@@ -54,7 +55,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        return view('todos.show', ['todo' => $todo]);
+        return view('todos::todos.show', ['todo' => $todo]);
     }
 
     /**

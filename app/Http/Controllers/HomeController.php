@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Weegy\Todos\App\Contracts\TodoContract;
 
 class HomeController extends Controller
 {
+
+    /**
+     * @var TodoContract $_todoContainer
+     */
+    private $_todoContainer;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(TodoContract $todoContainer)
     {
+        $this->_todoContainer = $todoContainer;
     }
 
     /**
@@ -23,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $allTodos = Todo::with('user')->get();
-        return view('home', ['todos' => $allTodos]);
+        $allTodoItems = $this->_todoContainer->getAllTodos();
+        return view('home', ['todos' => $allTodoItems]);
     }
 }
