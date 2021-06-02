@@ -23,8 +23,15 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Todo whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Todo whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Todo whereUserId($value)
  */
 class Todo extends Model
 {
     use HasFactory;
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
