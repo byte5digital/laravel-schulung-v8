@@ -2,24 +2,22 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        @guest
-                        @else
-                            {{ __('You are logged in!') }}
-                        @endguest
+        <h1>ToDos</h1>
+        <div>
+            <?php
+            use App\Models\Todo; /** @var Todo $todo */ ?>
+            @foreach ($todos as $todo)
+                <div class="row">
+                    <div class="col-4">
+                        <a href="{{route('todo.show', $todo)}}">
+                        {{$todo->title}}
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        {{$todo->user->name}}
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

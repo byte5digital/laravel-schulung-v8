@@ -2,8 +2,8 @@
 
 ## used Packages
 
-- debugbar [composer require barryvdh/laravel-debugbar --dev]
-- ide-helper [composer require --dev barryvdh/laravel-ide-helper]
+- debugbar [composer require barryvdh/laravel-debugbar --dev] https://github.com/barryvdh/laravel-debugbar
+- ide-helper [composer require --dev barryvdh/laravel-ide-helper] https://github.com/barryvdh/laravel-ide-helper
 - laravel-permission [composer require spatie/laravel-permission]
     - Documentation [https://spatie.be/docs/laravel-permission/v4/installation-laravel]
     - Publish Config [php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"]
