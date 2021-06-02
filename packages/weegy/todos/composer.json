@@ -1,0 +1,25 @@
+{
+    "name": "weegy/todos",
+    "description": "ToDos Packaging for training",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Marcel Wege",
+            "email": "mwege@byte5.de"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Weegy\\Todos\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Weegy\\Todos\\TodoProvider"
+            ]
+        }
+    }
+}

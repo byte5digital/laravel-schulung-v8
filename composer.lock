@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e1308c90dd4d20eaeca015bff7424ea",
+    "content-hash": "406085d0fe197391d79219e486e906cd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4886,6 +4886,38 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "weegy/todos",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/weegy/todos",
+                "reference": "3a3e87f19fdf5c89fe49448256a08a87908d8733"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Weegy\\Todos\\TodoProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Weegy\\Todos\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Marcel Wege",
+                    "email": "mwege@byte5.de"
+                }
+            ],
+            "description": "ToDos Packaging for training",
+            "transport-options": {
+                "relative": true
+            }
         }
     ],
     "packages-dev": [
@@ -8926,7 +8958,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "weegy/todos": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
