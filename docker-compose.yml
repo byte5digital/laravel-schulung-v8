@@ -4,15 +4,38 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-      target: debug
+      target: web-apache
     volumes:
       - ./:/var/www/html:cached
-      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./php.ini:/usr/local/etc/php/php.ini
     ports:
-      - "4000:80"
-    environment:
-      XDEBUG_CONFIG: client_host=host.docker.internal mode=develop,debug start_with_request=yes
+      - "8000:80"
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: php-debug
+    volumes:
+      - ./:/var/www/html:cached
+      - ./php.ini:/usr/local/etc/php/php.ini
+  queue:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: php-prod
+    depends_on:
+      redis:
+        condition: "service_healthy"
+    volumes:
+      - ./:/var/www/html:cached
+    entrypoint: php /var/www/html/artisan queue:work
+  scheduler:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: php-prod
+    volumes:
+      - ./:/var/www/html:cached
+    entrypoint: php /var/www/html/artisan schedule:work
   db:
     image: mariadb:10.5
     environment:
@@ -26,4 +49,9 @@ services:
       - ./mariadb:/var/lib/mysql
   redis:
     image: redis:6
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 30
 
