@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Http\Containers\ElasticSearchContainer;
 use App\Http\Contracts\ElasticSearchContract;
 use Livewire\Component;
+use Str;
 use Weegy\Todos\App\Contracts\TodoContract;
 
 class TestDi extends Component
@@ -14,18 +15,22 @@ class TestDi extends Component
      * @var TodoContract $diContainer
      */
     protected $diContainer;
-    public $todos;
-    public $query;
+    public $content;
+    public $guid;
+
+    public function mount()
+    {
+        $this->guid = Str::uuid()->toString();
+    }
 
     public function render()
     {
         return view('livewire.test-di');
     }
 
-    public function test()
+    public function showValue()
     {
-        $this->diContainer = resolve(ElasticSearchContract::class);
-        $this->todos = $this->diContainer->searchContent($this->query);
+        dd($this->content);
     }
 
 }

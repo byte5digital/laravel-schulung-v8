@@ -19,6 +19,10 @@
                 </div>
             @endforeach
             <livewire:test-di />
+            <livewire:test-di />
+            <livewire:test-di />
         </div>
     </div>
+
+
 @endsection

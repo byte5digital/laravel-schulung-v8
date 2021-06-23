@@ -1,11 +1,23 @@
 <div>
-    <form wire:submit.prevent="test">
-        <input type="text" wire:model.lazy="query" id="query"/>
-        <button
-
-            class="p-4 w-full py-1 border border-mpgGreen text-mpgGreen hover:bg-mpgGreen hover:text-white">
-            Test
-        </button>
-    </form>
-
+    <div wire:ignore>
+        <textarea wire:model="content" id="{{$guid}}" class="description" name="description"></textarea>
+    </div>
+    <button wire:click="showValue">Show Value</button>
 </div>
+
+
+<script >
+    tinymce.init({
+        selector: `#{{$guid}}`,
+        height: 200,
+        forced_root_block: false,
+        setup: function (editor) {
+            editor.on('init change', function () {
+                editor.save();
+            });
+            editor.on('change', function (e) {
+            @this.set('content', editor.getContent())
+            });
+        },
+    })
+</script>

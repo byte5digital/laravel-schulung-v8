@@ -43,7 +43,6 @@ class HomeController extends Controller
     {
         $all_todo_items = $this->_todoContainer->getAllTodos();
 
-       $reponse = Http::post('http://host.docker.internal:3333/', TodoResource::collection($all_todo_items)->toArray($request));
 
         return view('home', ['todos' => $all_todo_items]);
     }
