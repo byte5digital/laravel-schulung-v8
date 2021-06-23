@@ -18,6 +18,7 @@
                     </div>
                 </div>
             @endforeach
+            <livewire:test-di />
         </div>
     </div>
 @endsection

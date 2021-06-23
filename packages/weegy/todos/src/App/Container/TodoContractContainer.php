@@ -2,6 +2,8 @@
 
 namespace Weegy\Todos\App\Container;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Weegy\Todos\App\Contracts\TodoContract;
 use Weegy\Todos\App\Models\Todo;
 
@@ -23,6 +25,16 @@ class TodoContractContainer implements TodoContract
 
     public function storeTodo($todo)
     {
-        // TODO: Implement storeTodo() method.
+        try{
+            DB::beginTransaction();
+            DB::commit();
+        }
+        catch (\Exception $exception){
+            DB::rollBack();
+        }
+
+
+
+
     }
 }

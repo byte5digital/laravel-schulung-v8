@@ -17,3 +17,8 @@
 - login scaffolding [composer require laravel/ui]
 - login ui [php artisan ui vue --auth]
 
+
+## Tips & Tricks
+
+- https://keydb.dev/
+

@@ -34,6 +34,19 @@ services:
     entrypoint: php /var/www/html/artisan queue:work
     networks:
       - frontend
+  horizon:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: php-prod
+    depends_on:
+      redis:
+        condition: "service_healthy"
+    volumes:
+      - ./:/var/www/html:cached
+    entrypoint: php /var/www/html/artisan horizon
+    networks:
+      - frontend
   scheduler:
     build:
       context: ./
