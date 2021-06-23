@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Contracts\ElasticSearchContract;
+use App\Http\Resources\TodoResource;
 use App\Jobs\TestJob;
 use App\Models\Todo;
 use Cache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redis;
 use Log;
 use Weegy\Todos\App\Contracts\TodoContract;
@@ -37,13 +39,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $all_todo_items = $this->_todoContainer->getAllTodos();
 
-        foreach ($all_todo_items as $todo) {
-            $this->_elasticContainer->indexContent($todo);
-        }
+       $reponse = Http::post('http://host.docker.internal:3333/', TodoResource::collection($all_todo_items)->toArray($request));
 
         return view('home', ['todos' => $all_todo_items]);
     }

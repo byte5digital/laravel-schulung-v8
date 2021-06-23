@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiTestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/test', [ApiTestController::class, 'testEndpoint'])->name('test.endpoint');
+
+Route::get('/testdb', [ApiTestController::class, 'testDbTransaction'])->name('test.db');

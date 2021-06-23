@@ -11,6 +11,8 @@ services:
       - "8000:80"
     networks:
       - frontend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   php:
     build:
       context: ./
@@ -21,6 +23,8 @@ services:
       - ./php.ini:/usr/local/etc/php/php.ini
     networks:
       - frontend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   queue:
     build:
       context: ./
