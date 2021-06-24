@@ -25,6 +25,16 @@ services:
       - frontend
     extra_hosts:
       - "host.docker.internal:host-gateway"
+  node:
+    build:
+      context: ../laravel-schulung-node/
+      dockerfile: Dockerfile
+    volumes:
+      - ../laravel-schulung-node/:/usr/app
+    networks:
+      - frontend
+    ports:
+      - "3333:3000"
   queue:
     build:
       context: ./

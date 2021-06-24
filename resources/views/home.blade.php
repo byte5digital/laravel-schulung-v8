@@ -15,12 +15,17 @@
                     </div>
                     <div class="col-4">
                         {{$todo->user->name}}
+
+                    </div>
+                    <div class="col-4">
+                        <a href="{{route('validate.user', $todo->user)}}">
+                            {{$todo->user->email}}
+                        </a>
+
                     </div>
                 </div>
             @endforeach
-            <livewire:test-di />
-            <livewire:test-di />
-            <livewire:test-di />
+
         </div>
     </div>
 

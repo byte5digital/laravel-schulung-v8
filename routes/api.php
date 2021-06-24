@@ -23,3 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/test', [ApiTestController::class, 'testEndpoint'])->name('test.endpoint');
 
 Route::get('/testdb', [ApiTestController::class, 'testDbTransaction'])->name('test.db');
+
+Route::get('/validateuser/{user}', [ApiTestController::class, 'validateUser'])->name('validate.user');
